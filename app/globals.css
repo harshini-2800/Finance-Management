@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #07070D;
+  --foreground: #F3F4F6;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Glassmorphism utility classes */
+.glass-panel {
+  background: rgba(15, 17, 28, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-interactive {
+  background: rgba(15, 17, 28, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-interactive:hover {
+  background: rgba(22, 25, 42, 0.75);
+  border-color: rgba(124, 92, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(124, 92, 255, 0.2);
+}
+
+.glass-gold-glow {
+  box-shadow: 0 0 35px -5px rgba(245, 194, 107, 0.2);
+}
+
+.glass-violet-glow {
+  box-shadow: 0 0 35px -5px rgba(124, 92, 255, 0.25);
+}
+
+.glass-cyan-glow {
+  box-shadow: 0 0 35px -5px rgba(34, 211, 238, 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #07070D;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Number font */
+.font-numbers {
+  font-family: var(--font-space-grotesk), monospace;
+  font-variant-numeric: tabular-nums;
+}
+
