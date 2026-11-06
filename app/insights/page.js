@@ -142,9 +142,9 @@ export default function InsightsPage() {
               </span>
             </div>
             <div className="p-3 rounded-2xl bg-white/5">
-              <span className="text-slate-400 block text-[11px]">Capital Tier</span>
+              <span className="text-slate-400 block text-[11px]">Monthly Surplus</span>
               <span className="font-numbers text-lg font-bold text-gold">
-                {metrics?.tier || "Elite"}
+                ₹{metrics?.netSavings?.toLocaleString() || "44,000"}
               </span>
             </div>
           </div>

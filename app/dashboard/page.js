@@ -103,10 +103,6 @@ export default function DashboardPage() {
   }, []);
 
   const metrics = data.metrics || {
-    healthScore: 84,
-    tier: "Elite",
-    tierColor: "#F5C26B",
-    summary: "Strong capital velocity with pristine savings ratios.",
     savingsRate: 35,
     totalIncome: 83500,
     totalExpense: 39500,
@@ -136,7 +132,7 @@ export default function DashboardPage() {
             </span>
           </div>
           <p className="text-xs sm:text-sm text-slate-400 mt-1">
-            Real-time capital flows, health scoring & automated forecasting
+            Real-time capital flows, budget tracking & automated forecasting
           </p>
         </div>
 
@@ -158,7 +154,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* Grid: 3 Metric Cards + Financial Health Ring */}
+      {/* Grid: 4 Metric Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
         {/* Net Savings & Inflow */}
         <motion.div
@@ -199,8 +195,30 @@ export default function DashboardPage() {
             {currencySymbol}{metrics.totalExpense.toLocaleString()}
           </p>
           <div className="flex items-center gap-1.5 text-xs text-slate-400 mt-3">
-            <span className="text-emerald-accent font-semibold">Under control</span>
-            <span>({metrics.savingsRate}% saved)</span>
+            <span className="text-rose-400 font-semibold">Expenditure</span>
+            <span>({100 - metrics.savingsRate}% of inflow)</span>
+          </div>
+        </motion.div>
+
+        {/* Net Savings */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="glass-panel p-5 rounded-3xl border border-white/10 relative overflow-hidden"
+        >
+          <div className="flex items-center justify-between text-slate-400 text-xs font-medium">
+            <span>Net Capital Saved</span>
+            <div className="p-2 rounded-xl bg-purple-500/10 text-purple-300">
+              <Wallet className="w-4 h-4" />
+            </div>
+          </div>
+          <p className="font-numbers text-3xl font-bold text-white mt-2">
+            {currencySymbol}{metrics.netSavings.toLocaleString()}
+          </p>
+          <div className="flex items-center gap-1.5 text-xs text-slate-400 mt-3">
+            <span className="text-emerald-accent font-semibold">{metrics.savingsRate}%</span>
+            <span>savings rate</span>
           </div>
         </motion.div>
 
@@ -208,8 +226,8 @@ export default function DashboardPage() {
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="glass-panel p-5 rounded-3xl border border-white/10 relative overflow-hidden"
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="glass-panel p-5 rounded-3xl border border-cyan-500/30 relative overflow-hidden bg-gradient-to-br from-cyan-500/5 via-transparent to-purple-600/10"
         >
           <div className="flex items-center justify-between text-slate-400 text-xs font-medium">
             <span>Projected Month-End Reserve</span>
@@ -226,55 +244,6 @@ export default function DashboardPage() {
               {currencySymbol}{metrics.forecast.dailyBurnRate}/day
             </span>
             <span>({metrics.forecast.daysRemaining}d left)</span>
-          </div>
-        </motion.div>
-
-        {/* Financial Health Score Ring */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="glass-panel p-5 rounded-3xl border border-gold/30 shadow-gold-glow relative flex items-center justify-between bg-gradient-to-br from-gold/5 via-transparent to-purple-600/10"
-        >
-          <div>
-            <div className="flex items-center gap-1.5 text-gold text-xs font-semibold uppercase tracking-wider">
-              <ShieldCheck className="w-3.5 h-3.5" />
-              <span>Health Score</span>
-            </div>
-            <div className="flex items-baseline gap-1 mt-1">
-              <span className="font-numbers text-3xl font-extrabold text-white">
-                {metrics.healthScore}
-              </span>
-              <span className="text-xs text-slate-400 font-numbers">/100</span>
-            </div>
-            <p className="text-[11px] font-medium text-emerald-accent mt-1">
-              Tier: {metrics.tier}
-            </p>
-          </div>
-
-          {/* SVG Animated Circular Ring */}
-          <div className="relative w-16 h-16 flex items-center justify-center">
-            <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-              <path
-                className="text-white/10"
-                strokeWidth="3.5"
-                stroke="currentColor"
-                fill="none"
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-              <path
-                className="text-gold transition-all duration-1000 ease-out"
-                strokeDasharray={`${metrics.healthScore}, 100`}
-                strokeWidth="3.5"
-                strokeLinecap="round"
-                stroke="currentColor"
-                fill="none"
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-              />
-            </svg>
-            <span className="absolute font-numbers text-xs font-bold text-white">
-              {metrics.healthScore}%
-            </span>
           </div>
         </motion.div>
       </div>

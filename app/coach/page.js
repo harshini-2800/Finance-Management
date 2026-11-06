@@ -15,7 +15,7 @@ import {
 import toast from "react-hot-toast";
 
 const QUICK_PROMPTS = [
-  "What is my Financial Health Score breakdown?",
+  "What is my monthly cashflow breakdown?",
   "How can I cut ₹10,000 from my monthly burn?",
   "Can I afford a ₹1,50,000 vacation next May?",
   "Review my recurring subscriptions for waste",

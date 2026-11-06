@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata = {
   title: "AURUM – AI Personal Finance Copilot",
-  description: "Next-generation personal wealth management with real-time financial health scoring, autonomous budgeting, and Gemini AI intelligence.",
+  description: "Next-generation personal wealth management with real-time portfolio tracking, autonomous budgeting, and Gemini AI intelligence.",
 };
 
 export default function RootLayout({ children }) {

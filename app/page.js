@@ -81,7 +81,7 @@ export default function LandingPage() {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="text-slate-400 text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed font-normal"
         >
-          Experience midnight-luxury finance. Real-time health scores, natural language Talk-to-Add, subscription radar, and predictive spending simulations powered by Gemini AI.
+          Experience midnight-luxury finance. Real-time net liquidity tracking, natural language Talk-to-Add, subscription radar, and predictive spending simulations powered by Gemini AI.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -142,11 +142,11 @@ export default function LandingPage() {
             </div>
 
             <div className="glass-panel p-5 rounded-2xl border border-white/5">
-              <p className="text-xs text-slate-400 font-medium">Financial Health Ring</p>
+              <p className="text-xs text-slate-400 font-medium">Monthly Savings Rate</p>
               <div className="flex items-center justify-between mt-1">
-                <span className="font-numbers text-3xl font-bold text-gold">88 / 100</span>
+                <span className="font-numbers text-3xl font-bold text-gold">35%</span>
                 <span className="text-xs px-2.5 py-1 rounded-full bg-gold/15 text-gold border border-gold/30 font-medium">
-                  Elite Tier
+                  Optimized
                 </span>
               </div>
               <p className="text-xs text-slate-400 mt-2">Capital accumulation velocity 94th percentile</p>

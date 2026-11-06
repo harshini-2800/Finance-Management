@@ -92,7 +92,6 @@ export async function POST(request) {
     // Prepare context for Gemini AI
     const contextPrompt = `You are AURUM, a prestigious, highly intelligent private AI wealth and personal finance copilot.
 User's Real Financial Overview:
-- Health Score: ${metrics.healthScore}/100 (${metrics.tier})
 - Monthly Income / Inflow: ₹${metrics.totalIncome.toLocaleString()}
 - Total Spent This Month: ₹${metrics.totalExpense.toLocaleString()}
 - Monthly Net Savings: ₹${metrics.netSavings.toLocaleString()} (${metrics.savingsRate}% savings rate)
@@ -116,8 +115,8 @@ Give a sharp, polished, encouraging, and financially rigorous response. Keep it 
     } else {
       // Deterministic intelligent fallback
       const q = message.toLowerCase();
-      if (q.includes("health") || q.includes("score")) {
-        assistantReply = `Your AURUM Financial Health Score is currently **${metrics.healthScore}/100 (${metrics.tier})**.\n\nYour savings rate stands at **${metrics.savingsRate}%**, against a recommended target of 25%. Your month-end projected surplus is **₹${metrics.forecast.projectedSurplus.toLocaleString()}**. Keep non-essential dining and shopping controlled to sustain this upward trajectory.`;
+      if (q.includes("breakdown") || q.includes("cashflow") || q.includes("overview")) {
+        assistantReply = `Here is your current portfolio cash flow breakdown:\n\n- **Inflow**: ₹${metrics.totalIncome.toLocaleString()} / month\n- **Outflow**: ₹${metrics.totalExpense.toLocaleString()} / month\n- **Net Savings Velocity**: ₹${metrics.netSavings.toLocaleString()} (${metrics.savingsRate}% rate)\n- **Projected Month-End Reserve**: ₹${metrics.forecast.projectedSurplus.toLocaleString()}\n\nYour savings rate stands at **${metrics.savingsRate}%**, against a recommended target of 25%. Keep non-essential dining and shopping controlled to sustain this upward trajectory.`;
       } else if (q.includes("save") || q.includes("saving") || q.includes("cut")) {
         assistantReply = `Here are immediate actionable opportunities to amplify your capital accumulation:\n\n1. **Subscriptions**: You are currently paying **₹${metrics.monthlySubscriptionBurn.toLocaleString()}** monthly across recurring services. Auditing these can immediately yield over ₹1,000/mo.\n2. **Discretionary Spending**: Allocating 15% less to Dining and Shopping will compound into an additional **₹36,000+** over 12 months in an index fund.\n3. **Automate Transfers**: Direct your surplus into your active vault goals right when your salary arrives.`;
       } else if (q.includes("goal") || q.includes("vault")) {

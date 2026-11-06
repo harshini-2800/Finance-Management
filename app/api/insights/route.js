@@ -39,13 +39,12 @@ export async function GET() {
     });
 
     // Check cache for AI summary
-    const cacheKey = `${session.userId}_${transactions.length}_${baseMetrics.healthScore}`;
+    const cacheKey = `${session.userId}_${transactions.length}_${baseMetrics.savingsRate}_${baseMetrics.totalExpense}`;
     let aiCommentary = insightsCache.get(cacheKey);
 
     if (!aiCommentary) {
       // Try Gemini 1.5 Flash for personalized commentary
       const prompt = `Based on this user's financial profile:
-Health Score: ${baseMetrics.healthScore}/100 (${baseMetrics.tier})
 Savings Rate: ${baseMetrics.savingsRate}%
 Monthly Inflow: ₹${baseMetrics.totalIncome}
 Monthly Outflow: ₹${baseMetrics.totalExpense}
